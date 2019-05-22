@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA['asdasd']]></title>
-    <url>%2F20190522-null.html</url>
+    <title><![CDATA[asdasd]]></title>
+    <url>%2F20190522-sadsads.html</url>
     <content type="text"><![CDATA[sdsaf document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
       <categories>
         <category>123</category>
       </categories>
+      <tags>
+        <tag>dasfsa</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hexo搭建git博客]]></title>
