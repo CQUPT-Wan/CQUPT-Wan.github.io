@@ -1,0 +1,215 @@
+<!-- build time:Fri May 24 2019 10:46:22 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html class="theme-next mist use-motion" lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"><link rel="stylesheet" href="/css/main.css?v=7.1.1"><link rel="apple-touch-icon" sizes="180x180" href="/images/pikapika.png?v=7.1.1"><link rel="icon" type="image/png" sizes="32x32" href="/images/pikapika-32-32.png?v=7.1.1"><link rel="icon" type="image/png" sizes="16x16" href="/images/pikapika-16-16.png?v=7.1.1"><link rel="mask-icon" href="/images/pikapika.svg?v=7.1.1" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Mist",version:"7.1.1",sidebar:{position:"left",display:"hide",offset:12,onmobile:!0,dimmer:!1},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><script>!function(e,t,o,c,a,i,n){e.DaoVoiceObject=a,e[a]=e[a]||function(){(e[a].q=e[a].q||[]).push(arguments)},e[a].l=1*new Date,i=t.createElement(o),n=t.getElementsByTagName(o)[0],i.async=1,i.src=c,i.charset="utf-8",n.parentNode.insertBefore(i,n)}(window,document,"script",("https:"==document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/0f81ff2f.js","daovoice"),daovoice("init",{app_id:"ab02c609"}),daovoice("update")</script><meta name="description" content="牛客网剑指offer编程实践1-10题二维数组中的查找在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数解答：方法1：遍历整个二维数组，判断数组中是否含有该整数方法2：从二维数组的左下角tag开始判断，如果目标整数大于tag，tag右移，如果目标整数小于tag"><meta property="og:type" content="article"><meta property="og:title" content="剑指offer（1-10）"><meta property="og:url" content="https://cqupt-wan.github.io/20190523-sword-to-offer-1.html"><meta property="og:site_name" content="CQUPT-Wan"><meta property="og:description" content="牛客网剑指offer编程实践1-10题二维数组中的查找在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数解答：方法1：遍历整个二维数组，判断数组中是否含有该整数方法2：从二维数组的左下角tag开始判断，如果目标整数大于tag，tag右移，如果目标整数小于tag"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2019-05-24T02:45:25.240Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="剑指offer（1-10）"><meta name="twitter:description" content="牛客网剑指offer编程实践1-10题二维数组中的查找在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数解答：方法1：遍历整个二维数组，判断数组中是否含有该整数方法2：从二维数组的左下角tag开始判断，如果目标整数大于tag，tag右移，如果目标整数小于tag"><link rel="alternate" href="/atom.xml" title="CQUPT-Wan" type="application/atom+xml"><link rel="canonical" href="https://cqupt-wan.github.io/20190523-sword-to-offer-1"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>剑指offer（1-10） | CQUPT-Wan</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">CQUPT-Wan</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">I love u 3000 times</p></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home //��ҳ"></i><br>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user //����"></i><br>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags //��ǩ"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th //����"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive //�鵵"></i><br>归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://cqupt-wan.github.io/20190523-sword-to-offer-1.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="CQUPT-Wan"><meta itemprop="description" content="愿你走过半生，归来仍是少年"><meta itemprop="image" content="/images/pikaqiu.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="CQUPT-Wan"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">剑指offer（1-10）</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-05-23 19:19:24" itemprop="dateCreated datePublished" datetime="2019-05-23T19:19:24+08:00">2019-05-23</time> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于</span> <time title="修改时间：2019-05-24 10:45:25" itemprop="dateModified" datetime="2019-05-24T10:45:25+08:00">2019-05-24</time> </span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">编程实践</span></a></span> ， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Coding/Sword-to-Offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span> </span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><span class="post-meta-item-text">评论数：</span> <a href="/20190523-sword-to-offer-1.html#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/20190523-sword-to-offer-1.html" itemprop="commentCount"></span> </a></span><span id="/20190523-sword-to-offer-1.html" class="leancloud_visitors" data-flag-title="剑指offer（1-10）"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">阅读次数：</span> <span class="leancloud-visitors-count"></span> <span>&#x2103;</span></span></div></header><div class="post-body" itemprop="articleBody"><p>牛客网剑指offer编程实践1-10题</p><h1 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h1><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数</p><p>解答：</p><p>方法1：遍历整个二维数组，判断数组中是否含有该整数</p><p>方法2：从二维数组的左下角tag开始判断，如果目标整数大于tag，tag右移，如果目标整数小于tag，tag上移。如果相等返回True</p><pre><code class="lang-python">class Solution:
+    # array 二维列表
+    def Find(self, target, array):
+        for i in array:
+            if target in i:
+                return True
+        return False
+
+    def Find(self, target, array):
+        raw = len(array)
+        col = len(array[0])
+        i = raw - 1
+        j = 0
+        while i >= 0 and j &lt; col:
+            if array[i][j] &lt; target:
+                j += 1
+            elif array[i][j] > target:
+                i -= 1
+            else:
+                return True
+        return False
+</code></pre><h1 id="替换空格"><a href="#替换空格" class="headerlink" title="替换空格"></a>替换空格</h1><p>请实现一个函数，将一个字符串中的每个空格替换成<code>%20</code>。例如，当字符串为<code>We Are Happy.</code>则经过替换之后的字符串为<code>We%20Are%20Happy</code>。</p><p>解答：</p><p>方法1：将字符串s变换成list，将list中的空格替换成“%20”，然后将list转换成字符串输出。缺点：不是原来的字符串s</p><p>方法2：先遍历以便字符串s，判断有多少个空格，然后从后往前开始替换。</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    # s 源字符串
+    def replaceSpace(self, s):
+        # write code here
+        s = list(s)
+        for i in range(len(s)):
+            if s[i] == ' ':
+                s[i] = '%20'
+        return ''.join(s)
+</code></pre><h1 id="从尾到头打印链表"><a href="#从尾到头打印链表" class="headerlink" title="从尾到头打印链表"></a>从尾到头打印链表</h1><p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。注意：自定义的listNode函数不能直接使用len()，使用while listNode:</p><p>解答：</p><p>方法1：使用一个栈，遍历链表进行进栈，然后出栈到ArrayList</p><p>方法2：遍历链表到list，然后利用list[::-1]进行输出</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    # 返回从尾部到头部的列表值序列，例如[1,2,3]
+    def printListFromTailToHead(self, listNode):
+        # write code here
+        if listNode is None:
+            return []
+        tmp = []
+        while listNode:
+            tmp.append(listNode.val)
+            listNode = listNode.next
+        return tmp[::-1]
+</code></pre><h1 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h1><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p><p>解答：</p><p>方法：根据前序遍历第一个元素找到根节点，然后在中序遍历中找到根节点的index，index左边的为根节点的左子树，index右边的为根节点的右子树。然后在两个遍历中截取两个子树进行迭代</p><p>注意：要返回二叉树，而不是数组，</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    # 返回构造的TreeNode根节点
+    def reConstructBinaryTree(self, pre, tin):
+        # write code here
+        if len(pre) == 0:
+            return None
+        else:
+            root = TreeNode(pre[0])
+            tag = tin.index(pre[0])
+            root.left = self.reConstructBinaryTree(pre[1:tag+1],tin[0:tag])
+            root.right = self.reConstructBinaryTree(pre[tag+1:],tin[tag+1:])
+        return root
+</code></pre><h1 id="用两个栈实现队列"><a href="#用两个栈实现队列" class="headerlink" title="用两个栈实现队列"></a>用两个栈实现队列</h1><p>1、用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p><p>解答：</p><p>方法：队列的Push操作就是一个栈A的进栈</p><p>队列的Pop操作，判断栈B是否为空，如果为空，则将栈A中所有元素pop，并push进栈B，栈B出栈；如果不为空，栈B直接出栈。</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def __init__(self):
+        self.stack0 = []
+        self.stack1 = []
+    def push(self, node):
+        # write code here
+        return self.stack0.append(node)
+    def pop(self):
+        # return xx
+        #出队：判断栈B是否为空，如果为空，则将栈A中所有元素pop，并push进栈B，栈B出栈；如果不为空，栈B直接出栈。
+        if self.stack1 == []:
+            while self.stack0:
+                self.stack1.append(self.stack0.pop())
+        return self.stack1.pop()
+</code></pre><p>2、用两个队列实现一个栈的功能？要求给出算法和思路！</p><p>方法：</p><p>入栈：将元素进队列A</p><p>出栈：判断队列A中元素的个数是否为1，如果等于1，则出队列，否则将队列A中的元素以此出队列并放入队列B，直到队列A中的元素留下一个，然后队列A出队列，再把队列B中的元素出队列以此放入队列A中。</p><h1 id="旋转数组最小数字"><a href="#旋转数组最小数字" class="headerlink" title="旋转数组最小数字"></a>旋转数组最小数字</h1><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</p><p>解答：</p><p>方法1：遍历整个数组找到最小的元素。</p><p>方法2：因为是非递减数组旋转，利用二分法进行判断，</p><p>如果array[mid] > array[0]，则最小元素在mid的右边。找到的第一个小于array[mid]的元素即最小元素</p><p>如果<code>array[mid] &lt; array[0]</code>，则最小元素在mid的左边。找到的第一个大于array[mid]的元素，它的后一个元素即为最小元素</p><p>注意数组为0，返回0。</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def minNumberInRotateArray(self, rotateArray):
+    # write code here
+        if len(rotateArray) == 0:
+            return 0
+        tmp = rotateArray[0]
+        for i in rotateArray:
+            if i &lt; tmp:
+                tmp = i
+        return tmp
+    #时间复杂度为O(lgn)，二分法
+    def minNumberInRotateArray(self, rotateArray):
+    # write code here
+        if len(rotateArray) == 0:
+            return 0
+        mid = int((len(rotateArray) - 1) / 2)
+        if rotateArray[mid] >= rotateArray[0]:
+            for i in rotateArray[mid:]:
+                if i &lt; rotateArray[mid]:
+                    return i
+        else:
+            for i in reversed(range(mid)):
+                if rotateArray[i] > rotateArray[mid]:
+                    return rotateArray[i + 1]
+</code></pre><h1 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h1><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。<code>n&lt;=39</code></p><p>解答：</p><p>方法：动态规划，一次的结果之和上两个数相关</p><pre><code># -*- coding:utf-8 -*-
+class Solution:
+    def Fibonacci(self, n):
+        # write code here
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        elif n == 2:
+            return 1
+        else:
+            tag = []
+            tag.append(1)
+            tag.append(1)
+            for i in range(2,n):
+                tag.append(tag[i-1]+tag[i-2])
+        return tag[n-1]
+    #从0开始，第0项为0，如果从第一项开始，则为while n > 1:
+    def Fibonacci(self, n):
+        f = 0
+        s = 1
+        while n:
+            s = f + s
+            f = s - f
+            n -= 1
+        return f
+</code></pre><h1 id="跳台阶"><a href="#跳台阶" class="headerlink" title="跳台阶"></a>跳台阶</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p><p>解答：</p><p>方法：</p><p>a.如果两种跳法，1阶或者2阶，那么假定第一次跳的是一阶，那么剩下的是n-1个台阶，跳法是f(n-1);</p><p>b.假定第一次跳的是2阶，那么剩下的是n-2个台阶，跳法是f(n-2)</p><p>c.由a\b假设可以得出总跳法为: f(n) = f(n-1) + f(n-2)</p><p>d.然后通过实际的情况可以得出：只有一阶的时候 f(1) = 1 ,只有两阶的时候可以有 f(2) = 2</p><p>e.可以发现最终得出的是一个斐波那契数列：</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def jumpFloor(self, number):
+        # write code here
+        if number == 1:
+            return 1
+        elif number == 2:
+            return 2
+        else:
+            tag = []
+            tag.append(1)
+            tag.append(2)
+            for i in range(2, number):
+                tag.append(tag[i - 1] + tag[i - 2])
+        return tag[number-1]
+    def jumpFloor(self, number):
+        f = 1
+        s = 2
+        while number > 1:
+            s = f + s
+            f = s - f
+            number -= 1
+        return f
+</code></pre><h1 id="变态跳台阶"><a href="#变态跳台阶" class="headerlink" title="变态跳台阶"></a>变态跳台阶</h1><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p><p>解答：</p><p>方法1：f(1) = 1</p><p>f(2) = f(2-1) + f(2-2) f(2-2)表示一次跳2级台阶</p><p>f(3) = f(3-1) + f(3-2) +f(3-3)</p><p>f(n) = f(n-1) +…+ f(n-(n-1)) + f(n-n)</p><p>​ = f(0) + f(1) +…+f(n-1)</p><p>f(n-1) = f(0) + f(1) +…+f(n-2)</p><p>f(n) = 2*f(n-1)</p><p>方法2：<strong>每个台阶都有跳与不跳两种情况（除了最后一个台阶），最后一个台阶必须跳。所以共用2^(n-1)中情况</strong></p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def jumpFloorII(self, number):
+        # write code here
+        return 2**(number-1)
+    def jumpFloorII(self, number):
+        if number &lt;= 0:
+            return -1
+        elif number == 1:
+            return 1
+        return 2*self.jumpFloorII(number-1)
+</code></pre><h1 id="矩阵覆盖"><a href="#矩阵覆盖" class="headerlink" title="矩阵覆盖"></a>矩阵覆盖</h1><p>我们可以用<code>2*1</code>的小矩形横着或者竖着去覆盖更大的矩形。请问用n个<code>2*1</code>的小矩形无重叠地覆盖一个<code>2*n</code>的大矩形，总共有多少种方法？</p><p>解答:</p><p>方法：同上面的斐波那契数列，只是f(1) = 1,f(2) = 2</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def rectCover(self, number):
+        # write code here
+            if number == 0:
+                return 0
+            if number == 1:
+                return 1
+            elif number == 2:
+                return 2
+            else:
+                tag = []
+                tag.append(1)
+                tag.append(2)
+                for i in range(2, number):
+                    tag.append(tag[i - 1] + tag[i - 2])
+            return tag[-1]
+
+    def rectCover(self, number):
+        if number == 0:
+            return 0
+        elif number == 1:
+            return 1
+        elif number == 2:
+            return 2
+        f = 1
+        s = 2
+        while number > 1:
+            s = s + f
+            f = s - f
+            number -= 1
+        return f
+</code></pre><script>document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });</script></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><p><span>本文标题:</span><a href="/20190523-sword-to-offer-1.html">剑指offer（1-10）</a></p><p><span>文章作者:</span><a href="/" title="访问 CQUPT-Wan 的个人博客">CQUPT-Wan</a></p><p><span>发布时间:</span>2019年05月23日 - 19:05</p><p><span>最后更新:</span>2019年05月24日 - 10:05</p><p><span>原始链接:</span><a href="/20190523-sword-to-offer-1.html" title="剑指offer（1-10）">https://cqupt-wan.github.io/20190523-sword-to-offer-1.html</a> <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://cqupt-wan.github.io/20190523-sword-to-offer-1.html" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");$(".fa-clipboard").click(function(){clipboard.on("success",function(){swal({title:"",text:"复制成功",icon:"success",showConfirmButton:!0})})})</script></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束啦<i class="fa fa-thumbs-up" aria-hidden="true"></i>感谢您的阅读-------------</div></div></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/20190524-null.html" rel="prev" title="'ssss'"><i class="fa fa-chevron-left"></i> 'ssss'</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/20190520-hexo-blog-optimization.html" rel="next" title="Hexo搭建git博客">Hexo搭建git博客 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/pikaqiu.png" alt="CQUPT-Wan"></a><p class="site-author-name" itemprop="name">CQUPT-Wan</p><div class="site-description motion-element" itemprop="description">愿你走过半生，归来仍是少年</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">3</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">3</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/CQUPT-Wan" title="GitHub &rarr; https://github.com/CQUPT-Wan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a href="mailto:1573406913@qq.com" title="E-Mail &rarr; mailto:1573406913@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div id="days"></div><script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("05/15/2019 15:13:14"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒"}function setzero(e){return 10>e&&(e="0"+e),e}show_date_time()</script></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二维数组中的查找"><span class="nav-number">1.</span> <span class="nav-text">二维数组中的查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#替换空格"><span class="nav-number">2.</span> <span class="nav-text">替换空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从尾到头打印链表"><span class="nav-number">3.</span> <span class="nav-text">从尾到头打印链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重建二叉树"><span class="nav-number">4.</span> <span class="nav-text">重建二叉树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用两个栈实现队列"><span class="nav-number">5.</span> <span class="nav-text">用两个栈实现队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#旋转数组最小数字"><span class="nav-number">6.</span> <span class="nav-text">旋转数组最小数字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">7.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跳台阶"><span class="nav-number">8.</span> <span class="nav-text">跳台阶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变态跳台阶"><span class="nav-number">9.</span> <span class="nav-text">变态跳台阶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵覆盖"><span class="nav-number">10.</span> <span class="nav-text">矩阵覆盖</span></a></li></ol></div></div></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span> <span class="with-love" id="heart"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">CQUPT-Wan</span> <span class="post-meta-divider">|</span><div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共5.7k字</span></div></div><div class="powered-by">由 <a href="https://github.com/CQUPT-Wan" class="theme-link" rel="noopener" target="_blank">CQUPT-Wan</a> 个人专属</div><span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script><script src="/lib/jquery/index.js?v=2.1.3"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.1.1"></script><script src="/js/motion.js?v=7.1.1"></script><script src="/js/schemes/muse.js?v=7.1.1"></script><script src="/js/scrollspy.js?v=7.1.1"></script><script src="/js/post-details.js?v=7.1.1"></script><script src="/js/next-boot.js?v=7.1.1"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return GUEST.indexOf(e)>-1}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"XCFvvrBlfEmx7tdixbWa5VQj-gzGzoHsz",appKey:"y91ceDayEtwEGQ9dKz4nUVtB",placeholder:"Just go go",avatar:"mm",meta:guest,pageSize:"10",visitor:!0,lang:"zh-cn"})</script><script>function proceedsearch(){$("body").append('<div class="search-popup-overlay local-search-pop-overlay"></div>').css("overflow","hidden"),$(".search-popup-overlay").click(onPopupClose),$(".popup").toggle();var e=$("#local-search-input");e.attr("autocapitalize","none"),e.attr("autocorrect","off"),e.focus()}var isfetched=!1,isXml=!0,search_path="search.xml";0===search_path.length?search_path="search.xml":/json$/i.test(search_path)&&(isXml=!1);var path="/"+search_path,onPopupClose=function(e){$(".popup").hide(),$("#local-search-input").val(""),$(".search-result-list").remove(),$("#no-result").remove(),$(".local-search-pop-overlay").remove(),$("body").css("overflow","")},searchFunc=function(e,t,o){"use strict";$("body").append('<div class="search-popup-overlay local-search-pop-overlay"><div id="search-loading-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div>').css("overflow","hidden"),$("#search-loading-icon").css("margin","20% auto 0 auto").css("text-align","center"),$.ajax({url:e,dataType:isXml?"xml":"json",async:!0,success:function(e){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var n=isXml?$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get():e,r=document.getElementById(t),s=document.getElementById(o),a=function(){var e=r.value.trim().toLowerCase(),t=e.split(/[\s\-]+/);t.length>1&&t.push(e);var o=[];if(e.length>0&&n.forEach(function(n){function r(t,o,n,r){for(var s=r[r.length-1],a=s.position,i=s.word,l=[],h=0;a+i.length<=n&&0!=r.length;){i===e&&h++,l.push({position:a,length:i.length});var p=a+i.length;for(r.pop();0!=r.length&&(s=r[r.length-1],a=s.position,i=s.word,p>a);)r.pop()}return c+=h,{hits:l,start:o,end:n,searchTextCount:h}}function s(e,t){var o="",n=t.start;return t.hits.forEach(function(t){o+=e.substring(n,t.position);var r=t.position+t.length;o+='<b class="search-keyword">'+e.substring(t.position,r)+"</b>",n=r}),o+=e.substring(n,t.end)}var a=!1,i=0,c=0,l=n.title.trim(),h=l.toLowerCase(),p=n.content.trim().replace(/<[^>]+>/g,""),u=p.toLowerCase(),f=decodeURIComponent(n.url).replace(/\/{2,}/g,"/"),d=[],g=[];if(""!=l&&(t.forEach(function(e){function t(e,t,o){var n=e.length;if(0===n)return[];var r=0,s=[],a=[];for(o||(t=t.toLowerCase(),e=e.toLowerCase());(s=t.indexOf(e,r))>-1;)a.push({position:s,word:e}),r=s+n;return a}d=d.concat(t(e,h,!1)),g=g.concat(t(e,u,!1))}),(d.length>0||g.length>0)&&(a=!0,i=d.length+g.length)),a){[d,g].forEach(function(e){e.sort(function(e,t){return t.position!==e.position?t.position-e.position:e.word.length-t.word.length})});var v=[];0!=d.length&&v.push(r(l,0,l.length,d));for(var $=[];0!=g.length;){var C=g[g.length-1],m=C.position,x=C.word,w=m-20,y=m+80;0>w&&(w=0),y<m+x.length&&(y=m+x.length),y>p.length&&(y=p.length),$.push(r(p,w,y,g))}$.sort(function(e,t){return e.searchTextCount!==t.searchTextCount?t.searchTextCount-e.searchTextCount:e.hits.length!==t.hits.length?t.hits.length-e.hits.length:e.start-t.start});var T=parseInt("1");T>=0&&($=$.slice(0,T));var b="";b+=0!=v.length?"<li><a href='"+f+"' class='search-result-title'>"+s(l,v[0])+"</a>":"<li><a href='"+f+"' class='search-result-title'>"+l+"</a>",$.forEach(function(e){b+="<a href='"+f+'\'><p class="search-result">'+s(p,e)+"...</p></a>"}),b+="</li>",o.push({item:b,searchTextCount:c,hitCount:i,id:o.length})}}),1===t.length&&""===t[0])s.innerHTML='<div id="no-result"><i class="fa fa-search fa-5x"></i></div>';else if(0===o.length)s.innerHTML='<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>';else{o.sort(function(e,t){return e.searchTextCount!==t.searchTextCount?t.searchTextCount-e.searchTextCount:e.hitCount!==t.hitCount?t.hitCount-e.hitCount:t.id-e.id});var a='<ul class="search-result-list">';o.forEach(function(e){a+=e.item}),a+="</ul>",s.innerHTML=a}};r.addEventListener("input",a),$(".local-search-pop-overlay").remove(),$("body").css("overflow",""),proceedsearch()}})};$(".popup-trigger").click(function(e){e.stopPropagation(),isfetched===!1?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(onPopupClose),$(".popup").click(function(e){e.stopPropagation()}),$(document).on("keyup",function(e){var t=27===e.which&&$(".search-popup").is(":visible");t&&onPopupClose()})</script></body></html><!-- rebuild by neat -->
