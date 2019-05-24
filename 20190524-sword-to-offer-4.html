@@ -1,0 +1,346 @@
+<!-- build time:Fri May 24 2019 20:38:52 GMT+0800 (GMT+08:00) --><!DOCTYPE html><html class="theme-next mist use-motion" lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css?v=1.0.2"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"><link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"><link rel="stylesheet" href="/css/main.css?v=7.1.1"><link rel="apple-touch-icon" sizes="180x180" href="/images/pikapika.png?v=7.1.1"><link rel="icon" type="image/png" sizes="32x32" href="/images/pikapika-32-32.png?v=7.1.1"><link rel="icon" type="image/png" sizes="16x16" href="/images/pikapika-16-16.png?v=7.1.1"><link rel="mask-icon" href="/images/pikapika.svg?v=7.1.1" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Mist",version:"7.1.1",sidebar:{position:"left",display:"hide",offset:12,onmobile:!0,dimmer:!1},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><script>!function(e,t,o,c,a,i,n){e.DaoVoiceObject=a,e[a]=e[a]||function(){(e[a].q=e[a].q||[]).push(arguments)},e[a].l=1*new Date,i=t.createElement(o),n=t.getElementsByTagName(o)[0],i.async=1,i.src=c,i.charset="utf-8",n.parentNode.insertBefore(i,n)}(window,document,"script",("https:"==document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/0f81ff2f.js","daovoice"),daovoice("init",{app_id:"ab02c609"}),daovoice("update")</script><meta name="description" content="31、 整数中1出现的次数（从1到n整数中1出现的次数）求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。解答：方法：设定整数点（如1、"><meta property="og:type" content="article"><meta property="og:title" content="剑指offer（31-40）"><meta property="og:url" content="https://cqupt-wan.github.io/20190524-sword-to-offer-4.html"><meta property="og:site_name" content="CQUPT-Wan"><meta property="og:description" content="31、 整数中1出现的次数（从1到n整数中1出现的次数）求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。解答：方法：设定整数点（如1、"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://wx2.sinaimg.cn/large/005JV1Cwly1g3co6nwokbj30gc06taa2.jpg"><meta property="og:image" content="https://ws4.sinaimg.cn/large/005JV1Cwly1g3co6vf469j30hn0bo74g.jpg"><meta property="og:image" content="https://wx4.sinaimg.cn/large/005JV1Cwly1g3co75oq17j30db09g74b.jpg"><meta property="og:image" content="https://ws3.sinaimg.cn/large/005JV1Cwly1g3co7gayn6j30op0bvq3f.jpg"><meta property="og:image" content="https://ws3.sinaimg.cn/large/005JV1Cwly1g3co7rhgs8j30bl0cr3yo.jpg"><meta property="og:image" content="https://wx2.sinaimg.cn/large/005JV1Cwly1g3co7zgotnj306j04bglg.jpg"><meta property="og:image" content="https://ws1.sinaimg.cn/large/005JV1Cwly1g3co85a0g3j307h029a9v.jpg"><meta property="og:updated_time" content="2019-05-24T12:38:10.347Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="剑指offer（31-40）"><meta name="twitter:description" content="31、 整数中1出现的次数（从1到n整数中1出现的次数）求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。解答：方法：设定整数点（如1、"><meta name="twitter:image" content="https://wx2.sinaimg.cn/large/005JV1Cwly1g3co6nwokbj30gc06taa2.jpg"><link rel="alternate" href="/atom.xml" title="CQUPT-Wan" type="application/atom+xml"><link rel="canonical" href="https://cqupt-wan.github.io/20190524-sword-to-offer-4"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>剑指offer（31-40） | CQUPT-Wan</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">CQUPT-Wan</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">I love u 3000 times</p></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home //��ҳ"></i><br>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user //����"></i><br>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags //��ǩ"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th //����"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive //�鵵"></i><br>归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://cqupt-wan.github.io/20190524-sword-to-offer-4.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="CQUPT-Wan"><meta itemprop="description" content="愿你走过半生，归来仍是少年"><meta itemprop="image" content="/images/pikaqiu.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="CQUPT-Wan"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">剑指offer（31-40）</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-05-24 20:02:36 / 修改时间：20:38:10" itemprop="dateCreated datePublished" datetime="2019-05-24T20:02:36+08:00">2019-05-24</time> </span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">编程实践</span></a></span> ， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Coding/Sword-to-Offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span> </span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><span class="post-meta-item-text">评论数：</span> <a href="/20190524-sword-to-offer-4.html#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/20190524-sword-to-offer-4.html" itemprop="commentCount"></span> </a></span><span id="/20190524-sword-to-offer-4.html" class="leancloud_visitors" data-flag-title="剑指offer（31-40）"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">阅读次数：</span> <span class="leancloud-visitors-count"></span> <span>&#x2103;</span></span></div></header><div class="post-body" itemprop="articleBody"><h1 id="31、-整数中1出现的次数（从1到n整数中1出现的次数）"><a href="#31、-整数中1出现的次数（从1到n整数中1出现的次数）" class="headerlink" title="31、 整数中1出现的次数（从1到n整数中1出现的次数）"></a>31、 整数中1出现的次数（从1到n整数中1出现的次数）</h1><p>求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。</p><p>解答：</p><p>方法：</p><p>设定整数点（如1、10、100等等）作为位置点i（对应n的各位、十位、百位等等），分别对每个数位上有多少包含1的点进行分析</p><p>1、根据设定的整数位置，对n进行分割，分为两部分，高位n/i，低位n%i</p><p>2、当i表示百位，且百位对应的数>=2,如n=31456,i=100，则a=314,b=56，此时百位为1的次数有a/10+1=32（最高两位0~31），每一次都包含100个连续的点，即共有(a%10+1)*100个点的百位为1</p><p>3、当i表示百位，且百位对应的数为1，如n=31156,i=100，则a=311,b=56，此时百位对应的就是1，则共有a%10(最高两位0-30)次是包含100个连续点，当最高两位为31（即a=311），本次只对应局部点00~56，共b+1次，所有点加起来共有（a%10*100）+(b+1)，这些点百位对应为1</p><p>4、当i表示百位，且百位对应的数为0,如n=31056,i=100，则a=310,b=56，此时百位为1的次数有a/10=31（最高两位0~30）</p><p>5、综合以上三种情况，当百位对应0或>=2时，有(a+8)/10次包含所有100个点，还有当百位为1(a%10==1)，需要增加局部点b+1</p><p>6、之所以补8，是因为当百位为0，则a/10==(a+8)/10，当百位>=2，补8会产生进位位，效果等同于(a/10+1)</p><p><img src="https://wx2.sinaimg.cn/large/005JV1Cwly1g3co6nwokbj30gc06taa2.jpg" alt="image"></p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def NumberOf1Between1AndN_Solution(self, n):
+        # write code here
+        i = 1
+        count = 0
+        while i &lt;= n:
+            a = n / i
+            b = n % i
+            count = count + (a+8)/10*i + (a%10==1)*(b+1)
+            i *= 10
+        return count
+</code></pre><h1 id="32、把数组排成最小的数"><a href="#32、把数组排成最小的数" class="headerlink" title="32、把数组排成最小的数"></a>32、把数组排成最小的数</h1><p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。</p><p>解答：</p><p>方法：比较字符串s1和s2大小时，即比较s1+s2和s2+s1的大小，小的放在前面，比较某一位的字符时，需要将这个位置和其后面所有位置的字符串进行比较。时间复杂度为O(n^2)，注意两点：1、数组为空时要返回‘’；2、数组中全为0时，返回的是0，而不是00000.</p><p><img src="https://ws4.sinaimg.cn/large/005JV1Cwly1g3co6vf469j30hn0bo74g.jpg" alt="image"></p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def PrintMinNumber(self, numbers):
+        # write code here
+        if numbers == []:
+            return ''
+        for i in range(len(numbers)):
+            for j in range(i+1,len(numbers)):
+                tmp0 = int(str(numbers[i]) + str(numbers[j]))
+                tmp1 = int(str(numbers[j]) + str(numbers[i]))
+                if tmp0 > tmp1:
+                    numbers[i],numbers[j] = numbers[j],numbers[i]
+        res = ''
+        for i in numbers:
+            res += str(i)
+        if int(res) == 0:
+            return 0
+        else:
+            return res
+</code></pre><h1 id="33、丑数"><a href="#33、丑数" class="headerlink" title="33、丑数"></a>33、丑数</h1><p>把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。</p><p>解答：</p><p>方法1：暴力求解，任何丑数p，2<em>p，3</em>p，5<em>p结果仍是偶数，1是最小的丑数，从1开始，将1</em>2,1<em>3,1</em>5比较，得到的最小丑数2，将得到的丑数2也同样<em>2，</em>3，*5，比较最小的数</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def GetUglyNumber_Solution(self, index):
+        # write code here
+        if index &lt; 7:
+            return index
+        res = [0] * index
+        res[0] = 1
+        tmp2 = 0
+        tmp3 = 0
+        tmp5 = 0
+        for i in range(1,index):
+            res[i] = min(res[tmp2]*2,res[tmp3]*3,res[tmp5]*5)
+            if res[i] == res[tmp2]*2:
+                tmp2 += 1
+            if res[i] == res[tmp3]*3:
+                tmp3 += 1
+            if res[i] == res[tmp5]*5:
+                tmp5 += 1
+        return res[-1]
+</code></pre><h1 id="34、第一个只出现一次的字符"><a href="#34、第一个只出现一次的字符" class="headerlink" title="34、第一个只出现一次的字符"></a>34、第一个只出现一次的字符</h1><p>在一个字符串(<code>0&lt;=字符串长度&lt;=10000</code>，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1（需要区分大小写）.</p><p>解答：</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def FirstNotRepeatingChar(self, s):
+        # write code here
+        res_dict = {}
+        for i in range(len(s)):
+            if s[i] not in res_dict:
+                res_dict[s[i]] = 0
+            res_dict[s[i]] += 1
+        for i in range(len(s)):
+            if res_dict[s[i]] == 1:
+                return i
+        return -1
+</code></pre><h1 id="35、数组中的逆序对"><a href="#35、数组中的逆序对" class="headerlink" title="35、数组中的逆序对"></a>35、数组中的逆序对</h1><p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007</p><p>解答：</p><p>方法：归并排序，在合并时，当前面的数组值array[i]大于后面数组值array[j]时，则前面</p><p>数组array[i]~array[mid]都是大于array[j]的，count += mid+1 - i</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def __init__(self):
+        self.count = 0
+    def InversePairs(self, data):
+        if len(data) == 0:
+            return 0
+        # write code here
+        self.MergeSort(data,0,len(data)-1)
+        return self.count%1000000007
+
+    def MergeSort(self,array,low,high):
+        if low &lt; high:
+            mid = (low + high) >> 1
+            self.MergeSort(array,low,mid)
+            self.MergeSort(array,mid+1,high)
+            self.count += self.MergeArray(array,low,mid,high)
+
+    def MergeArray(self,array,low,mid,high):
+        i = low
+        j = mid + 1
+        tmp = []
+        count = 0
+        while i &lt;= mid and j &lt;= high:
+            if array[i] &lt; array[j]:
+                tmp.append(array[i])
+                i += 1
+            else:
+                tmp.append(array[j])
+                j += 1
+                count += mid - i + 1
+        while i &lt;= mid:
+            tmp.append(array[i])
+            i += 1
+        while j &lt;= high:
+            tmp.append(array[j])
+            j += 1
+        for k in range(len(tmp)):
+            array[low + k] = tmp[k]
+        return count
+</code></pre><h1 id="36、两个链表的第一个公共结点"><a href="#36、两个链表的第一个公共结点" class="headerlink" title="36、两个链表的第一个公共结点"></a>36、两个链表的第一个公共结点</h1><p>输入两个链表，找出它们的第一个公共结点。</p><p>解答：</p><p>方法1：</p><p><img src="https://wx4.sinaimg.cn/large/005JV1Cwly1g3co75oq17j30db09g74b.jpg" alt="image"></p><p>长度相同有公共结点，第一次就遍历到；没有公共结点，走到尾部NULL相遇，返回NULL<br>长度不同有公共结点，第一遍差值就出来了，第二遍一起到公共结点；没有公共，一起到结尾NULL。</p><p>方法2：</p><p>遍历两个链表，如果链表长度相同，找到第一个相同的结点；不相同时，先将长的链表移动到和短的链表相同长度的位置，然后找到第一个相同的结点</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def FindFirstCommonNode(self, pHead1, pHead2):
+    # write code here
+        p1 = pHead1
+        p2 = pHead2
+        while p1 != p2:
+            if not p1:
+                p1 = pHead2
+            else:
+                p1 = p1.next
+            if not p2:
+                p2 = pHead1
+            else:
+                p2 = p2.next
+        return p1
+    def FindFirstCommonNode(self, pHead1, pHead2):
+        # write code here
+        sum1 = self.get_length(pHead1)
+        sum2 = self.get_length(pHead2)
+        if sum1 > sum2:
+            pHead1 = self.get_equal(pHead1,sum1-sum2)
+        else:
+            pHead2 = self.get_equal(pHead2,sum2-sum1)
+        while pHead1 != pHead2:
+            pHead1 = pHead1.next
+            pHead2 = pHead2.next
+        return pHead1
+
+    def get_equal(self,pHead,s):
+        while s > 0:
+            pHead = pHead.next
+            s -= 1
+        return pHead
+
+    def get_length(self,pHead):
+        summ = 0
+        while pHead:
+            pHead = pHead.next
+            summ += 1
+        return summ
+</code></pre><h1 id="37、数字在排序数组中出现的次数"><a href="#37、数字在排序数组中出现的次数" class="headerlink" title="37、数字在排序数组中出现的次数"></a>37、数字在排序数组中出现的次数</h1><p>统计一个数字在排序数组中出现的次数</p><p>解答：</p><p>方法1：</p><p>排序数组是升序排列，且数组中的数都是整数，则可以使用tmp0 = k – 0.5 和tmp1 = k + 0.5两个数，这两个数在数组中都没有，但可以找到第一个大于tmp0和tmp1的数的index，相减就是最后k出现的次数</p><p>方法2：</p><p>如果数组中的数不是整数，则利用二分法找到k值的第一次出现的index和最后一次出现的index；注意考虑没有k值的情况。</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    def GetNumberOfK(self, data, k):
+        tmp0 = k - 0.5
+        tmp1 = k + 0.5
+        count = self.get_index(data,tmp1) - self.get_index(data,tmp0)
+        return count
+
+    def get_index(self,data,k):
+        begin = 0
+        end = len(data) - 1
+        while begin &lt;= end:
+            mid = (begin + end) >> 1
+            if data[mid] &lt; k:
+                begin = mid + 1
+            elif data[mid] > k :
+                end = mid - 1
+        return begin
+
+class Solution:
+    def GetNumberOfK(self, data, k):
+        tmp0 = self.get_first(data,k,0,len(data)-1)
+        tmp1 = self.get_last(data, k, 0, len(data) - 1)
+        if tmp0 != -1 and tmp1 != -1:
+            return tmp1 - tmp0 + 1
+        return 0
+
+
+    def get_first(self,data,k,begin,end):
+        if begin > end:
+            return -1
+        mid = (begin + end) >> 1
+        if data[mid] > k:
+            return self.get_first(data,k,begin,mid-1)
+        elif data[mid] &lt; k:
+            return self.get_first(data,k,mid+1,end)
+        elif mid - 1 >= begin and data[mid-1] == k:
+            return self.get_first(data,k,begin,mid-1)
+        else:
+            return mid
+
+    def get_last(self,data,k,begin,end):
+        while begin &lt;= end:
+            mid = (begin + end) >> 1
+            if data[mid] > k:
+                end = mid - 1
+            elif data[mid] &lt; k:
+                begin = mid + 1
+            elif mid + 1 &lt;= end and data[mid+1] == k:
+                begin = mid + 1
+            else:
+                return mid
+        return -1
+</code></pre><h1 id="38、-二叉树的深度"><a href="#38、-二叉树的深度" class="headerlink" title="38、 二叉树的深度"></a>38、 二叉树的深度</h1><p>输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。</p><p>解答：</p><p>方法1：</p><p>递归，递归实际也是深度优先的思想（DFS）,时间复杂度为O(lgN),但是空间复杂度最坏为O(N),当二叉树退化为链表的时候。</p><p>方法2：</p><p>非递归，广度优先遍历BFS，时间复杂度O(N)；利用两个辅助值sum_count和count；sum_count记录每层的结点个数，当count == sum_count时说明一层的结点都已经遍历完毕，depth+1</p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def TreeDepth(self, pRoot):
+        if not pRoot:
+            return 0
+        left = int(self.TreeDepth(pRoot.left))
+        right = int(self.TreeDepth(pRoot.right))
+        return max(left,right)+1
+
+    def TreeDepth(self, pRoot):
+        # write code here
+        if not pRoot:
+            return 0
+        stack = []
+        stack.append(pRoot)
+        sum_count = 1
+        count = 0
+        depth = 0
+        while stack:
+            node = stack.pop(0)
+            count += 1
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+            if count == sum_count:
+                count = 0
+                sum_count = len(stack)
+                depth += 1
+        return depth
+</code></pre><h1 id="39、平衡二叉树"><a href="#39、平衡二叉树" class="headerlink" title="39、平衡二叉树"></a>39、平衡二叉树</h1><p>输入一棵二叉树，判断该二叉树是否是平衡二叉树。</p><p>解答：</p><p>方法1：递归法</p><p>有了求二叉树的深度的经验之后，很容易想到一个思路：遍历每个结点的时候，得到它的左右结点的深度。如果每个结点的左右二叉树的深度相差都不超过1，就是平衡二叉树。</p><p><img src="https://ws3.sinaimg.cn/large/005JV1Cwly1g3co7gayn6j30op0bvq3f.jpg" alt="image"></p><p>但是这个方法每个结点都被重复遍历，效率不高</p><p>方法2：自底向上</p><p>如果我们用后序遍历的方式遍历二叉树的每一个结点，在遍历到一个结点之前我们就已经遍历了它的左右子树。只要在遍历每个结点的时候几下它的深度，就可以一次遍历判断每个结点是不是平衡二叉树。</p><p><img src="https://ws3.sinaimg.cn/large/005JV1Cwly1g3co7rhgs8j30bl0cr3yo.jpg" alt="image"></p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def IsBalanced_Solution(self, pRoot):
+        depth = self.get_depth(pRoot)
+        if depth == -1:
+            return False
+        return True
+
+    def get_depth(self,pRoot):
+        if not pRoot:
+            return 0
+        left = self.get_depth(pRoot.left)
+        if left == -1:
+            return -1
+        right = self.get_depth(pRoot.right)
+        if right == -1:
+            return -1
+        if abs(left-right) &lt;= 1:
+            return max(left,right) + 1
+        else:
+            return -1
+
+    def IsBalanced_Solution(self, pRoot):
+        # write code here
+        if not pRoot:
+            return True
+        left = self.get_depth(pRoot.left)
+        right = self.get_depth(pRoot.right)
+        return abs(left - right) &lt;= 1 and self.IsBalanced_Solution(pRoot.left) and self.IsBalanced_Solution(pRoot.right)
+
+    def get_depth(self, pRoot):
+        if not pRoot:
+            return 0
+        return max(self.get_depth(pRoot.left), self.get_depth(pRoot.right)) + 1
+</code></pre><h1 id="40、-数组中只出现一次的数字"><a href="#40、-数组中只出现一次的数字" class="headerlink" title="40、 数组中只出现一次的数字"></a>40、 数组中只出现一次的数字</h1><p>一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。</p><p>解答：</p><p>方法：</p><p>1、考虑数组中只有一个数只出现一次，则将所有数字异或就可以得到这个数。</p><p>2、两个数不一样，则异或的结果至少有一位为1，我们找到第一个为1的位置，记作n；</p><p>找到数字k第一个为1的位</p><p><img src="https://wx2.sinaimg.cn/large/005JV1Cwly1g3co7zgotnj306j04bglg.jpg" alt="image"></p><p>3、根据第n为是否为1的标准可以将数组分为2个部分，这两个只出现一次的数就分别在这两个部分中，在通过异或即可得到结果</p><p><img src="https://ws1.sinaimg.cn/large/005JV1Cwly1g3co85a0g3j307h029a9v.jpg" alt="image"></p><pre><code class="lang-python"># -*- coding:utf-8 -*-
+class Solution:
+    # 返回[a,b] 其中ab是出现一次的两个数字
+    def FindNumsAppearOnce(self, array):
+        # write code here
+        res = 0
+        for i in array:
+            res ^= i
+        index = self.get_index(res)
+        num0 = num1 = 0
+        for i in array:
+            if self.get_sep(i,index) == 0:
+                num0 ^= i
+            else:
+                num1 ^= i
+        return num0,num1
+
+    def get_index(self,k):
+        index = 0
+        while k & 1 == 0:
+            k = k >> 1
+            index += 1
+        return index
+
+    def get_sep(self,k,index):
+        k = k >> index
+        return k & 1
+</code></pre><script>document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });</script></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><p><span>本文标题:</span><a href="/20190524-sword-to-offer-4.html">剑指offer（31-40）</a></p><p><span>文章作者:</span><a href="/" title="访问 CQUPT-Wan 的个人博客">CQUPT-Wan</a></p><p><span>发布时间:</span>2019年05月24日 - 20:05</p><p><span>最后更新:</span>2019年05月24日 - 20:05</p><p><span>原始链接:</span><a href="/20190524-sword-to-offer-4.html" title="剑指offer（31-40）">https://cqupt-wan.github.io/20190524-sword-to-offer-4.html</a> <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://cqupt-wan.github.io/20190524-sword-to-offer-4.html" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");$(".fa-clipboard").click(function(){clipboard.on("success",function(){swal({title:"",text:"复制成功",icon:"success",showConfirmButton:!0})})})</script></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束啦<i class="fa fa-thumbs-up" aria-hidden="true"></i>感谢您的阅读-------------</div></div></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/20190524-sword-to-offer-3.html" rel="next" title="剑指offer（21-30）">剑指offer（21-30） <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/"><img class="site-author-image" itemprop="image" src="/images/pikaqiu.png" alt="CQUPT-Wan"></a><p class="site-author-name" itemprop="name">CQUPT-Wan</p><div class="site-description motion-element" itemprop="description">愿你走过半生，归来仍是少年</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">5</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">3</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/CQUPT-Wan" title="GitHub &rarr; https://github.com/CQUPT-Wan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a href="mailto:1573406913@qq.com" title="E-Mail &rarr; mailto:1573406913@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div><div id="days"></div><script>function show_date_time(){window.setTimeout("show_date_time()",1e3),BirthDay=new Date("05/15/2019 15:13:14"),today=new Date,timeold=today.getTime()-BirthDay.getTime(),sectimeold=timeold/1e3,secondsold=Math.floor(sectimeold),msPerDay=864e5,e_daysold=timeold/msPerDay,daysold=Math.floor(e_daysold),e_hrsold=24*(e_daysold-daysold),hrsold=setzero(Math.floor(e_hrsold)),e_minsold=60*(e_hrsold-hrsold),minsold=setzero(Math.floor(60*(e_hrsold-hrsold))),seconds=setzero(Math.floor(60*(e_minsold-minsold))),document.getElementById("days").innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒"}function setzero(e){return 10>e&&(e="0"+e),e}show_date_time()</script></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#31、-整数中1出现的次数（从1到n整数中1出现的次数）"><span class="nav-number">1.</span> <span class="nav-text">31、 整数中1出现的次数（从1到n整数中1出现的次数）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#32、把数组排成最小的数"><span class="nav-number">2.</span> <span class="nav-text">32、把数组排成最小的数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#33、丑数"><span class="nav-number">3.</span> <span class="nav-text">33、丑数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#34、第一个只出现一次的字符"><span class="nav-number">4.</span> <span class="nav-text">34、第一个只出现一次的字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#35、数组中的逆序对"><span class="nav-number">5.</span> <span class="nav-text">35、数组中的逆序对</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#36、两个链表的第一个公共结点"><span class="nav-number">6.</span> <span class="nav-text">36、两个链表的第一个公共结点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#37、数字在排序数组中出现的次数"><span class="nav-number">7.</span> <span class="nav-text">37、数字在排序数组中出现的次数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#38、-二叉树的深度"><span class="nav-number">8.</span> <span class="nav-text">38、 二叉树的深度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#39、平衡二叉树"><span class="nav-number">9.</span> <span class="nav-text">39、平衡二叉树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#40、-数组中只出现一次的数字"><span class="nav-number">10.</span> <span class="nav-text">40、 数组中只出现一次的数字</span></a></li></ol></div></div></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span> <span class="with-love" id="heart"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">CQUPT-Wan</span> <span class="post-meta-divider">|</span><div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共14.8k字</span></div></div><div class="powered-by">由 <a href="https://github.com/CQUPT-Wan" class="theme-link" rel="noopener" target="_blank">CQUPT-Wan</a> 个人专属</div><span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script><script src="/lib/jquery/index.js?v=2.1.3"></script><script src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script src="/js/utils.js?v=7.1.1"></script><script src="/js/motion.js?v=7.1.1"></script><script src="/js/schemes/muse.js?v=7.1.1"></script><script src="/js/scrollspy.js?v=7.1.1"></script><script src="/js/post-details.js?v=7.1.1"></script><script src="/js/next-boot.js?v=7.1.1"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return GUEST.indexOf(e)>-1}),new Valine({el:"#comments",verify:!1,notify:!1,appId:"XCFvvrBlfEmx7tdixbWa5VQj-gzGzoHsz",appKey:"y91ceDayEtwEGQ9dKz4nUVtB",placeholder:"Just go go",avatar:"mm",meta:guest,pageSize:"10",visitor:!0,lang:"zh-cn"})</script><script>function proceedsearch(){$("body").append('<div class="search-popup-overlay local-search-pop-overlay"></div>').css("overflow","hidden"),$(".search-popup-overlay").click(onPopupClose),$(".popup").toggle();var e=$("#local-search-input");e.attr("autocapitalize","none"),e.attr("autocorrect","off"),e.focus()}var isfetched=!1,isXml=!0,search_path="search.xml";0===search_path.length?search_path="search.xml":/json$/i.test(search_path)&&(isXml=!1);var path="/"+search_path,onPopupClose=function(e){$(".popup").hide(),$("#local-search-input").val(""),$(".search-result-list").remove(),$("#no-result").remove(),$(".local-search-pop-overlay").remove(),$("body").css("overflow","")},searchFunc=function(e,t,o){"use strict";$("body").append('<div class="search-popup-overlay local-search-pop-overlay"><div id="search-loading-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div>').css("overflow","hidden"),$("#search-loading-icon").css("margin","20% auto 0 auto").css("text-align","center"),$.ajax({url:e,dataType:isXml?"xml":"json",async:!0,success:function(e){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var n=isXml?$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get():e,r=document.getElementById(t),s=document.getElementById(o),a=function(){var e=r.value.trim().toLowerCase(),t=e.split(/[\s\-]+/);t.length>1&&t.push(e);var o=[];if(e.length>0&&n.forEach(function(n){function r(t,o,n,r){for(var s=r[r.length-1],a=s.position,i=s.word,l=[],h=0;a+i.length<=n&&0!=r.length;){i===e&&h++,l.push({position:a,length:i.length});var p=a+i.length;for(r.pop();0!=r.length&&(s=r[r.length-1],a=s.position,i=s.word,p>a);)r.pop()}return c+=h,{hits:l,start:o,end:n,searchTextCount:h}}function s(e,t){var o="",n=t.start;return t.hits.forEach(function(t){o+=e.substring(n,t.position);var r=t.position+t.length;o+='<b class="search-keyword">'+e.substring(t.position,r)+"</b>",n=r}),o+=e.substring(n,t.end)}var a=!1,i=0,c=0,l=n.title.trim(),h=l.toLowerCase(),p=n.content.trim().replace(/<[^>]+>/g,""),u=p.toLowerCase(),f=decodeURIComponent(n.url).replace(/\/{2,}/g,"/"),d=[],g=[];if(""!=l&&(t.forEach(function(e){function t(e,t,o){var n=e.length;if(0===n)return[];var r=0,s=[],a=[];for(o||(t=t.toLowerCase(),e=e.toLowerCase());(s=t.indexOf(e,r))>-1;)a.push({position:s,word:e}),r=s+n;return a}d=d.concat(t(e,h,!1)),g=g.concat(t(e,u,!1))}),(d.length>0||g.length>0)&&(a=!0,i=d.length+g.length)),a){[d,g].forEach(function(e){e.sort(function(e,t){return t.position!==e.position?t.position-e.position:e.word.length-t.word.length})});var v=[];0!=d.length&&v.push(r(l,0,l.length,d));for(var $=[];0!=g.length;){var C=g[g.length-1],m=C.position,x=C.word,w=m-20,y=m+80;0>w&&(w=0),y<m+x.length&&(y=m+x.length),y>p.length&&(y=p.length),$.push(r(p,w,y,g))}$.sort(function(e,t){return e.searchTextCount!==t.searchTextCount?t.searchTextCount-e.searchTextCount:e.hits.length!==t.hits.length?t.hits.length-e.hits.length:e.start-t.start});var T=parseInt("1");T>=0&&($=$.slice(0,T));var b="";b+=0!=v.length?"<li><a href='"+f+"' class='search-result-title'>"+s(l,v[0])+"</a>":"<li><a href='"+f+"' class='search-result-title'>"+l+"</a>",$.forEach(function(e){b+="<a href='"+f+'\'><p class="search-result">'+s(p,e)+"...</p></a>"}),b+="</li>",o.push({item:b,searchTextCount:c,hitCount:i,id:o.length})}}),1===t.length&&""===t[0])s.innerHTML='<div id="no-result"><i class="fa fa-search fa-5x"></i></div>';else if(0===o.length)s.innerHTML='<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>';else{o.sort(function(e,t){return e.searchTextCount!==t.searchTextCount?t.searchTextCount-e.searchTextCount:e.hitCount!==t.hitCount?t.hitCount-e.hitCount:t.id-e.id});var a='<ul class="search-result-list">';o.forEach(function(e){a+=e.item}),a+="</ul>",s.innerHTML=a}};r.addEventListener("input",a),$(".local-search-pop-overlay").remove(),$("body").css("overflow",""),proceedsearch()}})};$(".popup-trigger").click(function(e){e.stopPropagation(),isfetched===!1?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(onPopupClose),$(".popup").click(function(e){e.stopPropagation()}),$(document).on("keyup",function(e){var t=27===e.which&&$(".search-popup").is(":visible");t&&onPopupClose()})</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html><!-- rebuild by neat -->
